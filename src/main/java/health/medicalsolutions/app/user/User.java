@@ -16,6 +16,8 @@ public class User {
 	private String account;
 	private String email;
 	private String password;
+	private String src;
+	
 	public int getId() {
 		return id;
 	}
@@ -51,6 +53,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getSrc() {
+		return src;
+	}
+	public void setSrc(String src) {
+		this.src = src;
 	}
 	
 	

