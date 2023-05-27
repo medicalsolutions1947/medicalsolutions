@@ -434,7 +434,7 @@
         data.ipAddress = ipLocation.ip;
         data.location = `${ipLocation.country_name} | ${ipLocation.region} | ${ipLocation.city}`
         data.src = srcParam
-        // console.log(data);
+        console.log(data);
 
         $.ajax({
           url: "https://medicalsolutions.osc-fr1.scalingo.io/user", //Change this to your php script url to receive logs
